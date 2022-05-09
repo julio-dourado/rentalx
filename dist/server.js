@@ -5,7 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
+app.use(express_1.default.json());
 app.get("/", (request, response) => {
     return response.json({ message: "Hello World !" });
+});
+app.post("/courses", (request, response) => {
+    const { name } = request.body;
+    return response.json({ name });
 });
 app.listen(3333, () => console.log("Server is Running !"));
